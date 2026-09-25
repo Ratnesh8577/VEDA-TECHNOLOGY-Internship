@@ -63,9 +63,6 @@ The project includes interactive Power BI dashboards for exploring sales perform
 
 ![Superstore Sales Dashboard](https://github.com/lijesh010/SuperstoreSalesAnalysisandForecasting/assets/131745794/af69e5aa-65bd-43c6-983f-8a7eb23500b9)
 
-### Dashboard 2
-
-![Superstore Sales Forecast Dashboard](https://github.com/lijesh010/SuperstoreSalesAnalysisandForecasting/assets/131745794/36ce41a5-fb68-4bf5-a0a-be5dadbe2523)
 
 ---
 
