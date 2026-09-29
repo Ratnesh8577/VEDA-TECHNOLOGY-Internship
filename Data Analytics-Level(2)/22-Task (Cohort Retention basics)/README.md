@@ -1,64 +1,131 @@
-# Online Retail Data Analysis (Python + SQL + Power BI)
+# 📊 Online Retail Data Analysis — Python, SQL
 
-An end-to-end data analysis project on the **Online Retail II dataset** from the UCI Machine Learning Repository. The project covers data cleaning in Python, analytical SQL queries in PostgreSQL, and an interactive Power BI dashboard — extracting actionable business insights on customer behavior, sales performance, and retention.
+An end-to-end **Data Analytics project** using the **Online Retail II dataset** from the UCI Machine Learning Repository.
+
+This project demonstrates a complete data analytics workflow, starting from raw transactional data and progressing through **data cleaning, PostgreSQL database analysis, KPI reporting, customer cohort analysis, RFM segmentation, and interactive Power BI visualization**.
+
+The project focuses on extracting meaningful business insights related to **customer behavior, sales performance, revenue trends, customer retention, product performance, and customer segmentation**.
+
+---
 
 ## 📌 Table of Contents
 
-* [Project Overview](#project-overview)
-* [Dataset](#dataset)
-* [Project Structure](#project-structure)
-* [Tech Stack](#tech-stack)
-* [Key Analyses](#key-analyses)
+* [Project Overview](#-project-overview)
+* [Business Questions](#-business-questions)
+* [Dataset](#-dataset)
+* [Dataset Columns](#-dataset-columns)
+* [Project Structure](#-project-structure)
+* [Tech Stack](#-tech-stack)
+* [Project Workflow](#-project-workflow)
+* [Key Analyses](#-key-analyses)
 
   * [1. Data Cleaning & Preparation](#1-data-cleaning--preparation)
-  * [2. KPI Queries](#2-kpi-queries)
+  * [2. KPI Analysis](#2-kpi-analysis)
   * [3. Cohort Analysis](#3-cohort-analysis)
   * [4. RFM Segmentation](#4-rfm-segmentation)
   * [5. Power BI Dashboard](#5-power-bi-dashboard)
-* [How to Run](#how-to-run)
-* [Results & Insights](#results--insights)
+* [How to Run](#-how-to-run)
+* [Results & Insights](#-results--insights)
+* [Skills Demonstrated](#-skills-demonstrated)
+* [Project Purpose](#-project-purpose)
 
 ---
 
-## 📌 Project Overview
+# 📌 Project Overview
 
-This project answers key business questions for an online retail company:
+This project analyzes approximately **1 million retail transactions** from an online retail business.
+
+The project covers the complete data analytics pipeline:
+
+```text
+Raw Excel Data
+      ↓
+Python Data Cleaning
+      ↓
+Cleaned CSV Dataset
+      ↓
+PostgreSQL Database
+      ↓
+SQL Analysis & KPI Views
+      ↓
+Cohort Analysis + RFM Segmentation
+      ↓
+Power BI Dashboard
+      ↓
+Business Insights
+```
+
+The analysis provides insights into:
+
+* Customer purchasing behavior
+* Customer retention
+* Customer segmentation
+* Revenue performance
+* Product performance
+* Country-level performance
+* New vs. returning customers
+* Cancellation trends
+
+---
+
+# 🎯 Business Questions
+
+The project answers important business questions such as:
 
 * Who are the most valuable customers?
 * Which customer segments are at risk of churning?
-* How well does the company retain customers over time?
-* What are the revenue and order trends by month, country, and product?
-
-The pipeline goes from **raw Excel data → cleaned CSV → PostgreSQL views → Power BI visuals**.
-
----
-
-## 📊 Dataset
-
-| Attribute                 | Details                                                                                          |
-| ------------------------- | ------------------------------------------------------------------------------------------------ |
-| **Source**                | [UCI ML Repository – Online Retail II](https://archive.ics.uci.edu/dataset/502/online+retail+ii) |
-| **Alternative (Cleaned)** | [Kaggle – Cleaned Dataset](https://www.kaggle.com/datasets/shahnawaj9/online-retail)             |
-| **Period**                | December 2009 – December 2011                                                                    |
-| **Size**                  | ~1,067,371 transactions (after combining both years)                                             |
-| **Geography**             | UK-based retailer with customers across multiple countries                                       |
-
-### Columns
-
-| Column        | Description                                |
-| ------------- | ------------------------------------------ |
-| `InvoiceNo`   | Invoice number (prefix `C` = cancellation) |
-| `StockCode`   | Product code                               |
-| `Description` | Product name                               |
-| `Quantity`    | Units per transaction                      |
-| `InvoiceDate` | Date and time of transaction               |
-| `UnitPrice`   | Price per unit (GBP)                       |
-| `CustomerID`  | Unique customer identifier                 |
-| `Country`     | Customer's country                         |
+* How well does the business retain customers over time?
+* Which customer cohorts have stronger retention?
+* What are the monthly revenue and order trends?
+* Which countries generate the highest revenue?
+* Which products generate the highest sales?
+* How many customers are new versus returning?
+* What is the cancellation rate over time?
+* Which customer segments contribute the most revenue?
 
 ---
 
-## 📁 Project Structure
+# 📊 Dataset
+
+The project uses the **Online Retail II** dataset from the **UCI Machine Learning Repository**.
+
+| Attribute              | Details                                                         |
+| ---------------------- | --------------------------------------------------------------- |
+| **Dataset**            | Online Retail II                                                |
+| **Source**             | UCI Machine Learning Repository                                 |
+| **Alternative Source** | Kaggle – Cleaned Dataset                                        |
+| **Period**             | December 2009 – December 2011                                   |
+| **Records**            | Approximately 1,067,371 transactions after combining both years |
+| **Geography**          | UK-based retailer with customers across multiple countries      |
+
+### Dataset Sources
+
+**UCI Machine Learning Repository**
+
+https://archive.ics.uci.edu/dataset/502/online+retail+ii
+
+**Kaggle – Cleaned Dataset**
+
+https://www.kaggle.com/datasets/shahnawaj9/online-retail
+
+---
+
+# 📋 Dataset Columns
+
+| Column        | Description                                          |
+| ------------- | ---------------------------------------------------- |
+| `InvoiceNo`   | Invoice number. Prefix `C` indicates a cancellation. |
+| `StockCode`   | Unique product code.                                 |
+| `Description` | Product name or description.                         |
+| `Quantity`    | Number of units purchased.                           |
+| `InvoiceDate` | Date and time of the transaction.                    |
+| `UnitPrice`   | Price per unit in GBP.                               |
+| `CustomerID`  | Unique customer identifier.                          |
+| `Country`     | Customer's country.                                  |
+
+---
+
+# 📁 Project Structure
 
 ```text
 online-retail-data-analysis/
@@ -91,178 +158,396 @@ online-retail-data-analysis/
 
 ---
 
-## 🛠️ Tech Stack
+# 🛠️ Tech Stack
 
-| Tool                                   | Purpose                                         |
-| -------------------------------------- | ----------------------------------------------- |
-| **Python** (Pandas, NumPy, SQLAlchemy) | Data cleaning, preprocessing, DB ingestion      |
-| **PostgreSQL**                         | Analytical SQL queries and views                |
-| **Jupyter Notebook**                   | Exploratory analysis and pipeline documentation |
-| **Power BI**                           | Interactive dashboard and business intelligence |
-
----
-
-## 🔍 Key Analyses
-
-### 1. Data Cleaning & Preparation
-
-**Notebook:** `01_data_cleaning_with_Python/retail_data_cleaning_and_preparation.ipynb`
-
-* Combined two Excel sheets (2009–2010 and 2010–2011) into a single DataFrame of **1,067,371 rows**
-* Flagged cancellation invoices (prefix `C`) with an `is_cancelled` column
-* Dropped rows with missing `Description` (**4,382 rows removed**)
-* Standardized column names to lowercase snake_case
-* Added `total_price` column (`quantity × unit_price`)
-* Final clean dataset: **1,062,989 rows** exported to `online_retail_cleaned.csv`
-
-**Notebook:** `01_data_cleaning_with_Python/Queries.ipynb`
-
-* Imported cleaned CSV into PostgreSQL using SQLAlchemy
-* Created the `retail_data` table and ran validation queries
+| Technology           | Purpose                                          |
+| -------------------- | ------------------------------------------------ |
+| **Python**           | Data cleaning and preprocessing                  |
+| **Pandas**           | Data manipulation and analysis                   |
+| **NumPy**            | Numerical operations                             |
+| **SQLAlchemy**       | Database connection and data ingestion           |
+| **PostgreSQL**       | Database storage and analytical SQL              |
+| **Jupyter Notebook** | Exploratory analysis and workflow documentation  |
+| **Power BI**         | Interactive dashboards and business intelligence |
 
 ---
 
-### 2. KPI Queries
+# 🔄 Project Workflow
 
-**Script:** `02_sql_scripts_in_PostgreSQL/kpi_test_queries.sql`
+## 1. Data Cleaning
 
-Eight SQL views covering the core business KPIs:
+Raw Excel data is cleaned and transformed using Python.
 
-| View                           | Description                                       |
-| ------------------------------ | ------------------------------------------------- |
-| `total_orders_revenue`         | Overall revenue, order count, and customer count  |
-| `yearly_revenue_order_summary` | Revenue and orders broken down by year            |
-| `monthly_revenue`              | Monthly revenue trend with active customer counts |
-| `top_customers`                | Customers ranked by total spend                   |
-| `country_summary`              | Revenue and orders by country                     |
-| `product_sales_summary`        | Top-selling products by quantity and revenue      |
-| `segment_revenue_summary`      | Revenue breakdown by RFM customer segment         |
-| `new_vs_returning_customers`   | Monthly split of new vs. returning customers      |
-| `cancel_rate_summary`          | Cancellation rate trend over time                 |
+## 2. Database Loading
 
----
+The cleaned dataset is imported into PostgreSQL using SQLAlchemy.
 
-### 3. Cohort Analysis
+## 3. SQL Analysis
 
-**Folder:** `03_cohort_analysis/`
+SQL views are created to analyze:
 
-Customers are grouped by their **first purchase month (cohort)**. The analysis then tracks how many of those customers, and how much revenue, return in each subsequent month from **Month 0 through Month 12**.
+* Revenue
+* Orders
+* Customers
+* Products
+* Countries
+* Customer segments
+* New vs. returning customers
+* Cancellation rates
 
-Two output views:
+## 4. Customer Analytics
 
-* **Customer-level cohort** — how many customers from each cohort return month over month
-* **Revenue-level cohort** — how much revenue each cohort generates in subsequent months
+Advanced customer analytics are performed using:
 
-This reveals retention drop-off rates and identifies which acquisition periods produced the most loyal customers.
+* Cohort Analysis
+* RFM Segmentation
 
-For a full methodology walkthrough, see:
+## 5. Dashboard Development
 
-`03_cohort_analysis/README.md`
+The analytical outputs are connected to Power BI to create an interactive business intelligence dashboard.
 
 ---
 
-### 4. RFM Segmentation
+# 🔍 Key Analyses
 
-**Folder:** `04_RFM_segmentation/`
+## 1. Data Cleaning & Preparation
 
-RFM (**Recency, Frequency, Monetary**) scoring assigns each customer a value on three dimensions:
-
-| Dimension     | Definition                                |
-| ------------- | ----------------------------------------- |
-| **Recency**   | Days since last purchase (lower = better) |
-| **Frequency** | Number of distinct invoices               |
-| **Monetary**  | Total spend (GBP)                         |
-
-Each metric is scored **1–4** using `NTILE(4)`, producing a 3-digit RFM code (for example, `444`). Customers are then mapped to six business segments:
-
-| Segment                        | Description                             |
-| ------------------------------ | --------------------------------------- |
-| **Loyal**                      | High scores across all three metrics    |
-| **Active**                     | Regularly purchasing, engaged customers |
-| **New Customers**              | Recent first-time buyers                |
-| **Potential Churners**         | Moderate risk — declining engagement    |
-| **Slipping Away, Cannot Lose** | Were high-value, now going quiet        |
-| **Churned Customer**           | Low recency, frequency, and spend       |
-
-**Output:** `04_RFM_segmentation/rfm_final_score.csv`
-
-For full segment definitions and scoring logic, see:
-
-`04_RFM_segmentation/README.md`
-
----
-
-### 5. 📊 Power BI Dashboard
-
-**File:** `05_power_bi_dashboard/Retail_analysis.pbix`
-
-An interactive Power BI report built on top of the PostgreSQL views and CSV outputs. It brings together all analyses into a single dashboard for business stakeholder reporting.
-
-To open the dashboard, download the `.pbix` file and open it in **Power BI Desktop**.
-
----
-
-## 🚀 How to Run
-
-### Prerequisites
-
-* Python 3.8+
-* PostgreSQL (any recent version)
-* Power BI Desktop
-* Jupyter Notebook or JupyterLab
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/Md-ShahNawaj/online-retail-data-analysis-python-sql-powerbi.git
-cd online-retail-data-analysis-python-sql-powerbi
-```
-
-### 2. Install Python Dependencies
-
-```bash
-pip install pandas numpy openpyxl sqlalchemy psycopg2
-```
-
-### 3. Download the Dataset
-
-Download the **Online Retail II** dataset from the UCI Machine Learning Repository or use the pre-cleaned Kaggle version.
-
-### 4. Run Data Cleaning
-
-Open and run:
+**Notebook:**
 
 ```text
 01_data_cleaning_with_Python/retail_data_cleaning_and_preparation.ipynb
 ```
 
-This produces:
+### Data Cleaning Steps
+
+* Combined the two Excel sheets covering 2009–2010 and 2010–2011
+* Created an `is_cancelled` column to identify cancellation invoices
+* Identified cancellation invoices using the `C` prefix
+* Removed records with missing `Description`
+* Standardized column names to lowercase snake_case
+* Created a `total_price` column using:
+
+```text
+total_price = quantity × unit_price
+```
+
+### Dataset Transformation
+
+| Stage                                   |       Records |
+| --------------------------------------- | ------------: |
+| Combined raw dataset                    | **1,067,371** |
+| Rows removed due to missing Description |     **4,382** |
+| Final cleaned dataset                   | **1,062,989** |
+
+The cleaned dataset is exported as:
 
 ```text
 online_retail_cleaned.csv
 ```
 
-### 5. Import Data into PostgreSQL
+---
 
-Update the database connection string in:
+## PostgreSQL Data Import
+
+**Notebook:**
 
 ```text
 01_data_cleaning_with_Python/Queries.ipynb
 ```
 
-Run the notebook to create the `retail_data` table.
+This notebook is used to:
 
-### 6. Run SQL Scripts
+* Connect Python with PostgreSQL
+* Import the cleaned CSV
+* Create the `retail_data` table
+* Run validation queries
+* Verify the imported dataset
 
-Execute the SQL files in PostgreSQL in this order:
+---
+
+# 2. 📊 KPI Analysis
+
+**SQL Script:**
 
 ```text
 02_sql_scripts_in_PostgreSQL/kpi_test_queries.sql
+```
+
+The project contains **nine analytical SQL views** covering the major business KPIs.
+
+| SQL View                       | Description                                       |
+| ------------------------------ | ------------------------------------------------- |
+| `total_orders_revenue`         | Overall revenue, order count, and customer count  |
+| `yearly_revenue_order_summary` | Revenue and orders by year                        |
+| `monthly_revenue`              | Monthly revenue trends and active customer counts |
+| `top_customers`                | Customers ranked by total spending                |
+| `country_summary`              | Revenue and orders by country                     |
+| `product_sales_summary`        | Product performance by quantity and revenue       |
+| `segment_revenue_summary`      | Revenue by RFM customer segment                   |
+| `new_vs_returning_customers`   | Monthly split of new and returning customers      |
+| `cancel_rate_summary`          | Cancellation rate trends over time                |
+
+These views create a reusable analytical layer for SQL analysis and Power BI reporting.
+
+---
+
+# 3. 📈 Cohort Analysis
+
+**Folder:**
+
+```text
+03_cohort_analysis/
+```
+
+Cohort analysis groups customers according to their **first purchase month**.
+
+Each customer is assigned to a cohort based on the month of their first purchase.
+
+The analysis then tracks customer activity and revenue in subsequent months from:
+
+```text
+Month 0 → Month 12
+```
+
+### Customer-Level Cohort Analysis
+
+Measures:
+
+* Number of customers in each cohort
+* Returning customers
+* Customer retention
+* Retention drop-off over time
+
+### Revenue-Level Cohort Analysis
+
+Measures:
+
+* Revenue generated by each cohort
+* Revenue contribution in subsequent months
+* Revenue retention patterns
+
+### Output Files
+
+```text
+Cohort_Analysis_on_Revenue.csv
+```
+
+```text
+Cohort_analysis_on_Customer_Level.csv
+```
+
+Cohort analysis helps identify retention patterns and understand which acquisition periods generated stronger customer engagement.
+
+Detailed methodology:
+
+```text
+03_cohort_analysis/README.md
+```
+
+---
+
+# 4. 👥 RFM Segmentation
+
+**Folder:**
+
+```text
+04_RFM_segmentation/
+```
+
+RFM stands for:
+
+* **Recency**
+* **Frequency**
+* **Monetary**
+
+RFM analysis evaluates customers based on their purchasing behavior and helps classify them into actionable customer segments.
+
+---
+
+## RFM Metrics
+
+| Metric        | Definition                                        |
+| ------------- | ------------------------------------------------- |
+| **Recency**   | Number of days since the customer's last purchase |
+| **Frequency** | Number of distinct invoices                       |
+| **Monetary**  | Total customer spending in GBP                    |
+
+Each metric is scored from **1 to 4** using:
+
+```sql
+NTILE(4)
+```
+
+The three scores are combined into a three-digit RFM code.
+
+For example:
+
+```text
+444
+```
+
+represents a customer with a high score across all three RFM dimensions.
+
+---
+
+## Customer Segments
+
+| Segment                        | Description                                                |
+| ------------------------------ | ---------------------------------------------------------- |
+| **Loyal**                      | Customers with high scores across all three RFM dimensions |
+| **Active**                     | Regularly purchasing and engaged customers                 |
+| **New Customers**              | Recent first-time buyers                                   |
+| **Potential Churners**         | Customers showing declining engagement                     |
+| **Slipping Away, Cannot Lose** | Previously high-value customers who are becoming inactive  |
+| **Churned Customer**           | Customers with low recency, frequency, and monetary values |
+
+### Output
+
+```text
+04_RFM_segmentation/rfm_final_score.csv
+```
+
+Detailed RFM methodology:
+
+```text
+04_RFM_segmentation/README.md
+```
+
+---
+
+# 5. 📊 Power BI Dashboard
+
+**Power BI File:**
+
+```text
+05_power_bi_dashboard/Retail_analysis.pbix
+```
+
+The Power BI report combines the PostgreSQL analytical views and CSV outputs into an interactive business intelligence dashboard.
+
+The dashboard provides a consolidated view of:
+
+* Revenue performance
+* Order trends
+* Customer performance
+* Product sales
+* Country performance
+* Customer segments
+* New vs. returning customers
+* Customer retention
+* RFM analysis
+
+The report is designed for business stakeholder reporting and interactive exploration.
+
+---
+
+# 🚀 How to Run
+
+## Prerequisites
+
+Install the following:
+
+* Python 3.8+
+* PostgreSQL
+* Power BI Desktop
+* Jupyter Notebook or JupyterLab
+
+---
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/Ratnesh8577/VEDA-TECHNOLOGY-Internship.git
+
+cd VEDA-TECHNOLOGY-Internship
+```
+
+---
+
+## 2. Install Python Dependencies
+
+```bash
+pip install pandas numpy openpyxl sqlalchemy psycopg2
+```
+
+---
+
+## 3. Download the Dataset
+
+Download the **Online Retail II** dataset from the UCI Machine Learning Repository or use the cleaned Kaggle version.
+
+---
+
+## 4. Run Data Cleaning
+
+Open:
+
+```text
+01_data_cleaning_with_Python/retail_data_cleaning_and_preparation.ipynb
+```
+
+Run the notebook to:
+
+1. Load the raw Excel files
+2. Combine both periods
+3. Identify cancellation invoices
+4. Remove missing descriptions
+5. Standardize column names
+6. Create `total_price`
+7. Export the cleaned dataset
+
+Output:
+
+```text
+online_retail_cleaned.csv
+```
+
+---
+
+## 5. Import Data into PostgreSQL
+
+Open:
+
+```text
+01_data_cleaning_with_Python/Queries.ipynb
+```
+
+Update the PostgreSQL connection details.
+
+Run the notebook to:
+
+* Create the database connection
+* Import the cleaned dataset
+* Create the `retail_data` table
+* Validate the imported data
+
+---
+
+## 6. Run SQL Scripts
+
+Execute the SQL scripts in PostgreSQL.
+
+### KPI Analysis
+
+```text
+02_sql_scripts_in_PostgreSQL/kpi_test_queries.sql
+```
+
+### RFM Segmentation
+
+```text
 02_sql_scripts_in_PostgreSQL/RFM_Segmentation.sql
+```
+
+### Cohort Analysis
+
+```text
 02_sql_scripts_in_PostgreSQL/Cohort_Analysis.sql
 ```
 
-### 7. Open the Power BI Dashboard
+---
+
+## 7. Open Power BI Dashboard
 
 Open:
 
@@ -270,22 +555,147 @@ Open:
 05_power_bi_dashboard/Retail_analysis.pbix
 ```
 
-in Power BI Desktop.
+using **Power BI Desktop**.
 
-Update the PostgreSQL data-source connection if prompted.
-
----
-
-## 📈 Results & Insights
-
-* **1M+ transactions** cleaned and analyzed across two years of retail data
-* **RFM segmentation** identifies actionable customer groups, from loyal high-spenders to at-risk churners
-* **Cohort analysis** reveals customer retention trends over 12 months
-* **KPI views** provide a ready-to-use analytical layer in PostgreSQL for ad-hoc analysis and Power BI
-* **Interactive Power BI dashboard** provides business-ready visuals for revenue trends, geographic performance, product sales, and customer segments
+If prompted, update the PostgreSQL data-source connection.
 
 ---
 
-## 👨‍💻 Project Purpose
+# 📈 Results & Insights
 
-This project demonstrates an end-to-end **Data Analytics workflow** using Python, SQL, PostgreSQL, and Power BI — from raw data cleaning and transformation to advanced customer analytics and interactive business intelligence reporting.
+The project provides a complete analytical view of the online retail business.
+
+### Transaction Analysis
+
+* More than **1 million transactions** were cleaned and analyzed.
+* Data covers approximately two years of retail activity.
+* The final cleaned dataset contains **1,062,989 records**.
+
+### Customer Analysis
+
+RFM segmentation identifies actionable customer groups including:
+
+* Loyal
+* Active
+* New Customers
+* Potential Churners
+* Slipping Away, Cannot Lose
+* Churned Customer
+
+### Retention Analysis
+
+Cohort analysis tracks customer activity from **Month 0 through Month 12**, helping analyze:
+
+* Customer retention
+* Customer drop-off
+* Repeat purchasing behavior
+* Cohort performance
+
+### KPI Analysis
+
+PostgreSQL analytical views provide reusable outputs for:
+
+* Revenue
+* Orders
+* Customers
+* Products
+* Countries
+* Customer segments
+* New vs. returning customers
+* Cancellation rates
+
+### Business Intelligence
+
+The Power BI dashboard transforms the analytical results into interactive business visuals for stakeholder reporting.
+
+---
+
+# 💡 Business Value
+
+This project demonstrates how raw transactional data can be transformed into actionable business intelligence.
+
+The analysis can help businesses:
+
+* Understand customer purchasing behavior
+* Identify valuable customer segments
+* Monitor customer retention
+* Identify customers showing signs of churn
+* Analyze revenue trends
+* Evaluate product performance
+* Compare country-level performance
+* Track new and returning customers
+* Monitor cancellation trends
+* Build interactive KPI dashboards
+
+---
+
+# 🎓 Skills Demonstrated
+
+```text
+Python
+Pandas
+NumPy
+SQL
+PostgreSQL
+SQLAlchemy
+Jupyter Notebook
+Data Cleaning
+Data Preprocessing
+Exploratory Data Analysis
+KPI Analysis
+Cohort Analysis
+RFM Segmentation
+Customer Analytics
+Customer Retention Analysis
+Data Visualization
+Business Intelligence
+Business Analytics
+```
+
+---
+
+# 📌 Project Highlights
+
+* ✅ **1M+ transactions analyzed**
+* ✅ Python-based data cleaning
+* ✅ PostgreSQL database implementation
+* ✅ Nine analytical SQL KPI views
+* ✅ Customer-level cohort analysis
+* ✅ Revenue-level cohort analysis
+* ✅ 12-month retention analysis
+* ✅ RFM customer segmentation
+* ✅ Six customer segments
+* ✅ Revenue and order analysis
+* ✅ Product and country analysis
+* ✅ New vs. returning customer analysis
+* ✅ Cancellation-rate analysis
+* ✅ Interactive Power BI dashboard
+* ✅ End-to-end Data Analytics workflow
+
+---
+
+# 👨‍💻 Project Purpose
+
+This project demonstrates an end-to-end **Data Analytics workflow** using Python, SQL, PostgreSQL, and Power BI.
+
+It covers the complete journey from:
+
+```text
+Raw Data
+   ↓
+Data Cleaning
+   ↓
+Data Transformation
+   ↓
+Database Storage
+   ↓
+SQL Analysis
+   ↓
+Customer Analytics
+   ↓
+Power BI Visualization
+   ↓
+Business Insights
+```
+
+The project demonstrates practical application of **Data Analytics, SQL, Customer Analytics, Cohort Analysis, RFM Segmentation, Business Intelligence, and Power BI**.
