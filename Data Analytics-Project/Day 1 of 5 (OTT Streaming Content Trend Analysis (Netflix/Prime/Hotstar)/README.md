@@ -36,7 +36,6 @@ The main objectives of this project are to:
 * Measure subscription revenue and customer value
 * Analyze viewing patterns and engagement
 * Identify popular content and genres
-* Analyze user ratings
 * Identify high-value and highly engaged users
 * Analyze subscription plans and revenue contribution
 * Analyze device and operating-system usage
