@@ -36,7 +36,7 @@ The main objectives of this project are to:
 9. Evaluate shipping costs and delivery time.
 10. Identify commonly used shippers and suppliers.
 11. Build interactive Power BI dashboards.
-12. Present business insights through KPIs and visualizations.
+12. KPIs and visualizations.
 
 ---
 
