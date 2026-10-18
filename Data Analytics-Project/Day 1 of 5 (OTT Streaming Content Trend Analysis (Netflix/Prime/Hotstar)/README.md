@@ -43,7 +43,7 @@ The main objectives of this project are to:
 * Analyze country and city-level performance
 * Track monthly viewing trends
 * Build an interactive Power BI dashboard
-* Demonstrate an end-to-end data analytics workflow
+* end-to-end data analytics workflow
 
 ---
 
